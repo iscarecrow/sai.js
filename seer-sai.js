@@ -4,6 +4,7 @@
   if(global.Sai){return;}
 
   var M = global.Sai = {};
+  // data to pass to sever
   M._DATAS = [];
 
 
@@ -23,7 +24,7 @@
   M.log = function(seed, profile){
     if(!seed){return;}
 
-    // 取消老版产品监控。
+    // 取消老版产品监控。???????????
     if(arguments.length >= 3){return;}
 
     var data;

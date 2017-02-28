@@ -60,6 +60,7 @@
   // @param {Number,String} number, 异常编码，IE 支持。
   // @return {Object} 主要用于单元测试，本身可以不返回。
   function error(catchType, message, file, line, column, number, stack){
+    // read https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments/callee
     if(!stack && arguments.callee.caller){
       stack = stacktrace(arguments.callee.caller);
     }
@@ -78,6 +79,7 @@
     };
 
     var key = file + ":" + line + ":" + message;
+    // read the same error use cache
     if(!ERROR_CACHE.hasOwnProperty(key)){
       data.uv = 1;
       ERROR_CACHE[key] = true;
@@ -108,6 +110,7 @@
   // @return {Boolean} 返回 `true` 则捕获异常，浏览器控制台不显示异常信息。
   //                   返回 `false` 则不捕获异常，浏览器控制台显示异常信息。
   //                   建议返回 `false`。
+  // read  https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onerror
   global.onerror = function(message, file, line, column) {
     error("global", message, file, line, column);
     return false;

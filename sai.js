@@ -1,4 +1,3 @@
-
 var win = window;
 var doc = win.document;
 var loc = win.location;
